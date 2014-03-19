@@ -1,0 +1,188 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Storage capacity per device} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of unique storage addresses per storage device
+(in the corresponding device's unit of access) accessible to
+generators of this type.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{devices} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the set of storage devices accessible to generators of
+this type. The devices may be either the names of individual devices
+in a ``parts'' logorg or the name of an ``array'' logorg.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Blocking factor} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a unit of access for generated requests that is a multiple
+of the storage devices' unit of access. All generated request
+starting addresses and sizes will be a multiple of this value.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Probability of sequential access} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the probability that a generated request is sequential to
+the immediately previous request. A sequential request starts at the
+address immediately following the last address accessed by the
+previously generated request.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Probability of local access} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the probability that a generated request is ``local'' to
+the immediately previous request. A local request begins some short
+distance away from the previous request's starting address, where the
+distance is computed via a random variable definition described below.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Probability of read access} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the probability that a generated request is a read.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Probability of time-critical request} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the probability that a generated request is time-critical.
+That is, the corresponding generator process ``blocks'' and waits for
+the request to complete before continuing with its sequence of work
+(i.e., its next think time) \cite{Ganger93,Ganger95}.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Probability of time-limited request} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the probability that a generated request is
+time-limited. That is, the corresponding generator process ``blocks''
+and waits for the request to complete (if it is not already complete)
+after a given amount of think time (specified by the below ``time
+limit'' parameters) \cite{Ganger93,Ganger95}.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Time-limited think times} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is a random variable distribution specifying the time limit for a
+time-limited request. Note that the generated time limit (i.e., the
+computation time occuring before the generator process ``blocks'' and
+waits for the request to complete) may differ from the actual time
+limit (due to CPU contention).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{General inter-arrival times} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is a random variable distribution specifying the inter-request think time
+preceding the generated request if the generated request's starting
+address is unrelated to the previous request's starting address (i.e.,
+if the generated request's address is ``random'' rather than
+``sequential'' or ``local'').
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Sequential inter-arrival times} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is a random variable distribution specifying the inter-request think
+time preceding the generated request if the generated request's
+starting address is ``sequential'' to the previous request's starting
+address.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Local inter-arrival times} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is a random variable distribution specifying the inter-request think time
+preceding the generated request if the generated request's starting
+address is ``local'' to the previous request's starting address.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Local distances} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is a random variable distribution specifying the distance from the
+previous request's starting address when generating a ``local''
+request's starting address.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_synthgen} & \texttt{Sizes} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is a random variable distribution specifying the request size.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

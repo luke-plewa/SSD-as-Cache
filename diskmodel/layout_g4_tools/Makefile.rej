@@ -1,0 +1,11 @@
+--- diskmodel/layout_g4_tools/Makefile	2007-03-06 12:58:48.000000000 -0800
++++ diskmodel/layout_g4_tools/Makefile	2008-08-19 16:38:55.881652500 -0700
+@@ -5,7 +5,7 @@
+ 
+ CFLAGS = -g $(DISKSIM_CFLAGS) $(DISKMODEL_CFLAGS) $(LIBPARAM_CFLAGS) $(LIBDDBG_CFLAGS) -Wall -Wno-unused
+ 
+-LDFLAGS = $(DISKSIM_LDFLAGS)  $(MEMSMODEL_LDFLAGS) -L.. -ldiskmodel  $(LIBPARAM_LDFLAGS) $(LIBDDBG_LDFLAGS) -lm
++LDFLAGS = $(DISKSIM_LDFLAGS)  $(MEMSMODEL_LDFLAGS) $(SSDMODEL_LDFLAGS) -L.. -ldiskmodel  $(LIBPARAM_LDFLAGS) $(LIBDDBG_LDFLAGS) -lm
+ 
+ TARGETS = g4_skews
+ all: $(TARGETS)

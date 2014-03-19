@@ -1,0 +1,346 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Scheduler} & block & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+An ioqueue; see Section \ref{param.queue}
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Max queue length} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the maximum number of requests that can be outstanding at
+the device's queue.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Block count} & int & optional \\ 
+\cline{1-4}
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Bus transaction latency} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the bulk sector transfer time in milliseconds. This is the
+time that it takes to transfer a single sector from the media.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Bulk sector transfer time} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the bulk sector transfer time in milliseconds. This is the
+time that it takes to transfer a single sector from the media.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Never disconnect} & int & required \\ 
+\cline{1-4}
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Print stats} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies whether or not statistics for the device will be reported.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Command overhead} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a per-request processing overhead that takes place
+immediately after the arrival of a new request at the device.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Timing model} & int & required \\ 
+\cline{1-4}
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Flash chip elements} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+RANGE(i,1,SSD_MAX_ELEMENTS)))
+This specifies the number of flash packages inside the SSD.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Page size} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of sectors in a physical flash page.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Pages per block} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of physical pages that make an SSD block.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Blocks per element} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of blocks in a single flash package.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Element stride pages} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of pages per stride per flash package.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Chip xfer latency} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the time taken to transfer a byte in a chip. The time
+is specified in ms.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Page read latency} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the time taken to read a flash page from the package
+into its register (in ms).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Page write latency} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the time taken to write a flash page from the package
+register into the flash memory (in ms).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Block erase latency} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the time taken to erase all the contents of a flash
+block (in ms).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Write policy} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the different write policies with in the SSD. Currently
+we just support one policy (a log structured design).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Reserve pages percentage} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a percentage of total pages in the SSD that must be
+reserved for cleaning.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Minimum free blocks percentage} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a threshold such that if the percentage of free blocks
+drop below this threshold, then it will trigger cleaning in an SSD.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Cleaning policy} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a cleaning policy to use. Currently we support
+two policies: greedy (2) and wear-aware (3)
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Planes per package} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of flash planes within a single package.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Blocks per plane} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of blocks per flash plane.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Plane block mapping} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies different block mapping strategies within a plane.
+There are three strategies: simple concatenation = 1,
+plane-pair stripping = 2 (not tested), full stripping = 3
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Copy back} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies whether copy back feature is enabled in the flash memory.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Number of parallel units} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of parallel units inside a flash package.
+The number of units can be 1 (entire flash package), 2 (two dies within
+a flash package), or 4 (four plane-pairs within a flash package).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Elements per gang} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of flash packages that are connected to
+form a gang.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Cleaning in background} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies whether cleaning happens stricktly in foreground
+or in foreground and background.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Gang share} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the type of ganging: shared-bus (1) or shared-control (2)
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{ssdmodel\_ssd} & \texttt{Allocation pool logic} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the allocation pool strategy: allocation per gang (0),
+allocation per elem (1), allocation per plane (2)
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

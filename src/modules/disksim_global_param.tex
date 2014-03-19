@@ -1,0 +1,121 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_global} & \texttt{Init Seed} & int & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the initial seed for the random number generator.
+The initial seed value is applied at the very beginning of the
+simulation and is used during the initialization phase (e.g.,~for
+determining initial rotational positions). Explicitly specifying the
+random generator seed enables experiment repeatability.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_global} & \texttt{Init Seed with time} & int & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+If a nonzero value is provided, DiskSim will use the current system
+time to initialize the ``Init Seed'' parameter.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_global} & \texttt{Real Seed} & int & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+The `real' seed value is applied after the initialization phase
+and is used during the simulation phase (e.g.,~for synthetic
+workload generation). This allows multiple synthetic workloads
+(with different simulation seeds) to be run on equivalent
+configurations (i.e.,~with identical initial seeds,
+as specified above).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_global} & \texttt{Real Seed with time} & int & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+If a nonzero value is provided, DiskSim will use the current system
+time to initialize the ``Real Seed'' parameter.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_global} & \texttt{Statistic warm-up time} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the amount of simulated time after which the statistics
+will be reset.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_global} & \texttt{Statistic warm-up IOs} & int & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of I/Os after which the statistics will be reset.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_global} & \texttt{Stat definition file} & string & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the name of the input file containing the
+specifications for the statistical distributions to collect. This
+file allows the user to control the number and sizes of histogram bins
+into which data are collected. This file is mandatory.
+Section~\ref{output.statdefs} describes its use.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_global} & \texttt{Output file for trace of I/O requests simulated} & string & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the name of the output file to contain a trace of disk
+request arrivals (in the default ASCII trace format described in
+Section~\ref{input.traces}). This allows instances of synthetically
+generated workloads to be saved and analyzed after the simulation
+completes. This is particularly useful for analyzing (potentially
+pathological) workloads produced by a system-level model.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_global} & \texttt{Detailed execution trace} & string & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the name of the output file to contain a detailed trace
+of system execution -- req issue/completion, etc.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

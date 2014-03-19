@@ -1,0 +1,64 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_iomap} & \texttt{tracedev} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the traced device affected by this mapping.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_iomap} & \texttt{simdev} & string & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the simulated device such requests should access.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_iomap} & \texttt{locScale} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a value by which a traced disk request location is multiplied to
+generate the starting location (in bytes) of the simulated disk
+request. For example, if the input trace specifies locations in terms
+of 512-byte sectors, a value of 512 would result in an equivalent
+logical space of requests.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_iomap} & \texttt{sizeScale} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a value by which a traced disk request size is
+multiplied to generate the size (in bytes) of the simulated disk
+request.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_iomap} & \texttt{offset} & int & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a value to be added to each simulated request's
+starting location. This is especially useful for combining multiple
+trace devices' logical space into the space of a single simulated
+device.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

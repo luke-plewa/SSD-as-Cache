@@ -1,0 +1,38 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_iosim} & \texttt{I/O Trace Time Scale} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a value by which each arrival time in a trace is
+multiplied. For example, a value of 2.0 doubles each arrival time,
+lightening the workload by stretching it out over twice the length of
+time. Conversely, a value of 0.5 makes the workload twice as heavy by
+compressing inter-arrival times. This value has no effect on
+workloads generated internally (by the synthetic generator).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_iosim} & \texttt{I/O Mappings} & list & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is a list of \texttt{iomap} blocks (see below) which enable translation
+of disk request sizes and locations in an input trace into disk
+request sizes and locations appropriate for the simulated environment.
+When the simulated environment closely matches the traced environment,
+these mappings may be used simply to reassign disk device numbers.
+However, if the configured environment differs significantly from the
+trace environment, or if the traced workload needs to be scaled (by
+request size or range of locations), these mappings can be used to
+alter the the traced ``logical space'' and/or scale request sizes and
+locations. One mapping is allowed per traced device.
+The mappings from devices identified in the trace to the storage
+subsystem devices being modeled are provided by block values.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

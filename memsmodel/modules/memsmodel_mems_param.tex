@@ -1,0 +1,395 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Scheduler} & block & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+An ioqueue; see Section \ref{param.queue}
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Points in precomputed seek curve} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the number of points in a precomputed seek curve. If set to
+zero, then the seek time is calculated for each seek. If not zero,
+then the seek curve is pre-computed at initialization time between
+zero and the maximum seek distance for the given number of points.
+Seek time is then interpolated from this curve.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Seek function} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the function used to calculate the seek time.
+Piecewise-linear approximation is used if this value is set to~0, and
+Hong's formula is used if this is set to~1.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Max queue length} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the maximum number of requests that can be outstanding at
+the device's queue.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Bulk sector transfer time} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the bulk sector transfer time in milliseconds. This is the
+time that it takes to transfer a single sector from the media.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Segment size (in blks)} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the size (in blocks) of buffer segments.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Number of buffer segments} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the number of buffer segments that the device supports.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Print stats} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies whether or not statistics for the device will be reported.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Command overhead} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a per-request processing overhead that takes place
+immediately after the arrival of a new request at the device.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Number of sleds} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the number of media sleds in the device.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Layout policy} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the data layout policy. Only two simple layouts are
+supported: Simple, which arranges blocks linearly on the media, and
+Streaming, which reverses every other track, elminiating seeks between
+tracks. Setting this parameter to~6 enables Simple layout and setting
+it to~7 enables the Streaming layout.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Sled movement X} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Defines the size of sled sweep area along the X dimension, specified
+in nanometers. Along with the "Sled movement Y" and "Bit cell length"
+parameters, this defines the capacity of the device.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Sled movement Y} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Defines the size of sled sweep area along the Y dimension, specified
+in nanometers. Along with the "Sled movement X" and "Bit cell length"
+parameters, this defines the raw capacity of the device.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Bit cell length} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Defines the size of a bit in nanometers. The area of a single bit is
+the length squared, since bit width is assumed to be equal to length.
+This parameter, combined with the "Sled movement X/Y" parameters
+determine the raw capacity of the device.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Tip sector length} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the number of bits in a tip sector, which is the unit of
+striping in the device. Multiplying this parameter by the "Tip
+sectors per lbn" gives the logical block size in bits.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Servo burst length} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the number of bits added to a tip sector for the preceeding
+servo burst. This could also be considered a generic storage overhead
+for other functions such as ECC.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Tip sectors per lbn} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the number of tip sectors that are combined to form a single
+logical block.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Number of usable tips} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the total number of read/write tips in the device.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Simultaneously active tips} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the number of read/write tips that can be active
+simultaneously. This is usually lower than the total number of tips
+in the device because of power constraints.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Bidirectional access} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+If this is set to~1, then data can be read in either direction, +Y or
+-Y. If set to~0, then data can only be read in the +Y direction.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Sled acceleration X} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the maximum acceleration of the media sled in the X
+direction in~G's.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Sled acceleration Y} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the maximum acceleration of the media sled in the Y
+direction in~G's.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Sled access speed} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the constant access speed of the media sled during data
+transfer, in terms of bits per second.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Sled resonant frequency} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the resonant frequency of the media sled in Hz. This
+determines the settle time after a seek.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Settling time constants} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the number of settling time constants added after a seek.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Spring constant factor} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+The spring constant factor represents the spring constant of the
+suspension springs. Since the spring constant isn't known for real
+devices, this is expressed as a fraction of the actuator force at full
+displacement. That is, if the spring constant factor is~0.5, then at
+full displacement the springs push back with one half of the force of
+the actuators.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Prefetch depth} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the number of sectors that are prefetched after a read,
+given that there are no other requests in the queue.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Time before sled inactive} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the amount of idle time in milliseconds before the sled is
+stopped and put into the low-power mode.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Startup delay} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies the delay in milliseconds that it takes to transition the
+sled from low-power mode to active mode when a request arrives.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Sled active power} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies in milliwatts the power consumption of the media sled while
+in the active mode.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Sled inactive power} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies in milliwatts the power consumption of the media sled while
+in the low-power mode.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{memsmodel\_mems} & \texttt{Tip access power} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies in milliwatts the power consumption of a single read/write
+tip when accessing data.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

@@ -1,0 +1,112 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_cachedev} & \texttt{Cache size} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the total size of the cache in blocks.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_cachedev} & \texttt{Max request size} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the maximum request size to be served by the cache. This
+value does not actually affect the simulated cache's behavior.
+Rather, higher-level system components (e.g.,~the device driver in
+DiskSim) acquire this information at initialization time and break up
+larger requests to accommodate it. 0~indicates that there is no
+maximum request size.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_cachedev} & \texttt{Write scheme} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the policy for handling write requests.
+1~indicates that new data are always synchronously written to the
+backing store before indicating completion.
+2~indicates a write-through scheme where requests are immediately
+initiated for writing out the new data to the backing store, but the
+original write requests are considered complete as soon as the new
+data is cached.
+3~indicates a write-back scheme where completions are reported
+immediately and dirty blocks are held in the cache for some time
+before being written out to the backing store.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_cachedev} & \texttt{Flush policy} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the policy for flushing dirty blocks to the backing store
+(assuming a write-back scheme for handling write requests).
+0~indicates that dirty blocks are written back ``on demand''
+(i.e.,~only when the allocation/replacement policy needs to reclaim
+them).
+1~indicates write-back requests are periodically initiated for all
+dirty cache blocks.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_cachedev} & \texttt{Flush period} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the time between periodic write-backs of all dirty cache
+blocks (assuming a periodic flush policy).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_cachedev} & \texttt{Flush idle delay} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the amount of contiguous idle time that must be observed
+before background write-backs of dirty cache blocks are initiated.
+Any front-end request processing visible to the cache resets the idle
+timer. -1.0~indicates that idle background flushing is disabled.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_cachedev} & \texttt{Cache device} & string & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+The device used for the cache.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_cachedev} & \texttt{Cached device} & string & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+The device whose data is being cached.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

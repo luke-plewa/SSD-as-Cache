@@ -1,0 +1,112 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g2\_zone} & \texttt{First cylinder number} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the first physical cylinder in the zone.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g2\_zone} & \texttt{Last cylinder number} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the last physical cylinder in the zone.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g2\_zone} & \texttt{First LBN} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+The first LBN in this zone.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g2\_zone} & \texttt{Last LBN} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+The first LBN in this zone.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g2\_zone} & \texttt{Blocks per track} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of sectors (independent of logical-to-physical
+mappings) on each physical track in the zone.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g2\_zone} & \texttt{Zone Skew} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the physical offset of the first logical sector in the
+zone. Physical sector 0 of every track is assumed to begin at the
+same angle of rotation. This may be in either sectors or revolutions
+according to the ''Skew units'' parameter.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g2\_zone} & \texttt{Skew units} & string & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Default is \texttt{sectors}. This value overrides any set in the
+surrounding layout block.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g2\_zone} & \texttt{Skew for track switch} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of physical sectors that are skipped when
+assigning logical block numbers to physical sectors at a track
+crossing point. Track skew is computed by the manufacturer to
+optimize sequential access. This may be in either sectors or
+revolutions according to the ''Skew units'' parameter.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g2\_zone} & \texttt{Skew for cylinder switch} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of physical sectors that are skipped when
+assigning logical block numbers to physical sectors at a cylinder
+crossing point. Cylinder skew is computed by the manufacturer to
+optimize sequential access. This may be in either sectors or
+revolutions according to the ''Skew units'' parameter.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

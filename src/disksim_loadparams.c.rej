@@ -1,0 +1,23 @@
+--- src/disksim_loadparams.c	2008-05-11 14:30:53.000000000 -0700
++++ src/disksim_loadparams.c	2008-09-24 15:29:10.662400200 -0700
+@@ -43,6 +43,8 @@
+ 
+ #include <diskmodel/modules/modules.h>
+ #include <memsmodel/modules/modules.h>
++/*SSD:*/
++#include <ssdmodel/modules/modules.h>
+ 
+ #include <stdio.h>
+ 
+@@ -75,6 +77,11 @@
+     lp_register_module(memsmodel_mods[c]);
+   }  
+ 
++  // ssdmodel modules
++  for(c = 0; c <= SSDMODEL_MAX_MODULE; c++) {
++    lp_register_module(ssdmodel_mods[c]);
++  }  
++
+   lp_register_topoloader(disksim_topoloader);
+ 
+   //  lp_init_typetbl();

@@ -1,0 +1,10 @@
+--- src/disksim_device.h	2008-05-11 14:30:53.000000000 -0700
++++ src/disksim_device.h	2008-09-24 15:51:48.648400200 -0700
+@@ -66,6 +66,7 @@
+   DEVICETYPE_DISK	= 1,
+   DEVICETYPE_SIMPLEDISK	= 2,
+   DEVICETYPE_MEMS      = 3,
++  DEVICETYPE_SSD       = 4,
+ 
+   // this is something of a hack so that things like synthgen can
+   // refer to a logorg by name.  All we care here is that it has a

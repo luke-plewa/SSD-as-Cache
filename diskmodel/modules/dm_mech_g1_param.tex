@@ -1,0 +1,200 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Access time type} & string & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the method for computing mechanical delays. Legal values
+are \texttt{constant} which indicates a fixed per-request access time
+(i.e.,~actual mechanical activity is not modeled),
+\texttt{averageRotation} which indicates that seek activity should be
+modeled but rotational latency is assumed to be equal to one half of
+a rotation (the statistical mean for random disk access) and
+\texttt{trackSwitchPlusRotation} which indicates that both seek and
+rotational activity should be modeled.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Constant access time} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Provides the constant access time to be used if the access time type
+is set to constant.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Seek type} & string & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the method for computing seek delays.
+Legal values are the following:
+\texttt{linear} indicates that the single-cylinder seek time, the average
+seek time, and the full-strobe seek time parameters should be used to
+compute the seek time via linear interpolation.
+\texttt{curve} indicates that the same three parameters should be used
+with the seek equation described in \cite{Lee93} (see Section
+\ref{seek.lee}).
+\texttt{constant} indicates a fixed per-request seek time. The
+\texttt{Constant seek time} parameter must be provided.
+\texttt{hpl} indicates that the six-value \texttt{HPL seek equation values}
+parameter (see below) should be used with the seek equation described
+in \cite{Ruemmler94} (see below).
+\texttt{hplplus10} indicates that the six-value \texttt{HPL seek
+equation values} parameter (see below) should be used with the seek
+equation described in \cite{Ruemmler94} for all seeks greater than
+10~cylinders in length. For smaller seeks, use the 10-value
+\texttt{First ten seek times} parameter (see below) as in
+\cite{Worthington94}.
+\texttt{extracted} indicates that a more complete seek curve (provided
+in a separate file) should be used, with linear interpolation used to
+compute the seek time for unspecified distances. If
+\texttt{extracted} layout is used, the parameter \texttt{Full seek curve}
+(below) must be provided.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Average seek time} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+The mean time necessary to perform a random seek
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Constant seek time} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+For the ``constant'' seek type (above).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Single cylinder seek time} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the time necessary to seek to an adjacent cylinder.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Full strobe seek time} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the full-strobe seek time (i.e.,~the time to seek from the
+innermost cylinder to the outermost cylinder).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Full seek curve} & string & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+The name of the input file containing the seek curve data.
+The format of this file is described below.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Add. write settling delay} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the additional time required to precisely settle the
+read/write head for writing (after a seek or head switch). As this
+parameter implies, the seek times computed using the above parameter
+values are for read access.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Head switch time} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the time required for a head switch (i.e.,~activating a
+different read/write head in order to access a different media
+surface).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Rotation speed (in rpms)} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the rotation speed of the disk platters in rpms.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{Percent error in rpms} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the maximum deviation in the rotation speed specified
+above. During initialization, the rotation speed for each
+disk is randomly chosen from a uniform distribution of the specified
+rotation speed $\pm$ the maximum allowed error.
+%(as computed from this parameter's value).
+This feature may be deprecated and should be avoided.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{First ten seek times} & list & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is a list of ten floating-point numbers specifying the seek time for seek
+distances of 1~through 10~cylinders.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_mech\_g1} & \texttt{HPL seek equation values} & list & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is a list containing six numbers specifying the variables
+$V_1$ through $V_6$ of the seek equation described in \cite{Ruemmler94}
+(see below).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

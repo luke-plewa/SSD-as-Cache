@@ -1,0 +1,123 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_ctlr} & \texttt{type} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the type of controller. 1~indicates a simple
+controller that acts as nothing more than a bridge between two buses,
+passing everything straight through to the other side. 2~indicates a
+very simple, driver-managed controller based roughly on the NCR
+53C700. 3~indicates a more complex controller that decouples
+lower-level storage component peculiarities from higher-level
+components (e.g.,~device drivers). The complex controller queues and
+schedules its outstanding requests and possibly contains a cache. As
+indicated below, it requires several parameters in addition to those
+needed by the simpler controllers.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_ctlr} & \texttt{Scale for delays} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a multiplicative scaling factor for the various
+processing delays incurred by the controller. Default overheads for
+the 53C700-based controller and the more complex controller are
+hard-coded into the ``read\_specs'' procedure of the controller module
+(and are easily changed). For the simple pass-thru controller, the
+scale factor represents the per-message propagation delay (because the
+hard-coded value is 1.0). 0.0 results in no controller overheads or
+delays. When the overheads/delays of the controller(s) cannot be
+separated from those of the disk(s), as is usually the case for
+single-point tracing of complete systems, the various disk
+overhead/delay parameter values should be populated and this parameter
+should be set to~0.0.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_ctlr} & \texttt{Bulk sector transfer time} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the time (in milliseconds) necessary to transfer a
+single 512-byte block to, from or through the controller.
+Transferring one block over the bus takes the maximum of this time,
+the block transfer time specified for the bus itself, and the block
+transfer time specified for the component on the other end of the bus
+transfer.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_ctlr} & \texttt{Maximum queue length} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the maximum number of requests that can be concurrently
+outstanding at the controller. The device driver discovers this value
+during initialization and respects it during operation. For the
+simple types of controllers (see above parameter description), 0 is
+assumed.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_ctlr} & \texttt{Print stats} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies whether or not statistics will be reported for the
+controller. It is meaningless for the simple types of controllers
+(see above parameter description), as no statistics are collected.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_ctlr} & \texttt{Scheduler} & block & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is an ioqueue; see section \ref{param.queue}
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_ctlr} & \texttt{Cache} & block & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+A block cache; see section \ref{param.cache}
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_ctlr} & \texttt{Max per-disk pending count} & int & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the maximum number of requests that the controller can
+have outstanding to each attached disk (i.e.,~the maximum number of
+requests that can be dispatched to a single disk). This parameter
+only affects the interaction of the controller with its attachments;
+it is not visible to the device driver.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

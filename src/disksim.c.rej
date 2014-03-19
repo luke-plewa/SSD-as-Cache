@@ -1,0 +1,19 @@
+--- src/disksim.c	2008-06-23 13:20:02.000000000 -0700
++++ src/disksim.c	2008-09-23 18:58:25.681482000 -0700
+@@ -806,8 +806,14 @@
+ 	     && (curr->type <= MEMS_MAX_EVENT)) 
+     {
+       io_internal_event ((ioreq_event *)curr);
+-    } 
+-    else if (curr->type == CHECKPOINT) 
++    }
++    /* SSD: These are ssd specific events */
++    else if ((curr->type >= SSD_MIN_EVENT)
++         && (curr->type <= SSD_MAX_EVENT))
++    {
++      io_internal_event ((ioreq_event *)curr);
++    }
++    else if (curr->type == CHECKPOINT)
+     {
+       if (disksim->checkpoint_interval) {
+ 	disksim_register_checkpoint(simtime + disksim->checkpoint_interval);

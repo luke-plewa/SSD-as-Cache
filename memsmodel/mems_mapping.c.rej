@@ -1,0 +1,13 @@
+--- memsmodel/mems_mapping.c	2008-05-11 14:30:54.000000000 -0700
++++ memsmodel/mems_mapping.c	2008-09-24 15:46:52.070400200 -0700
+@@ -39,6 +39,10 @@
+ #include "mems_global.h"
+ #include "mems_mapping.h"
+ 
++#ifdef _WIN32
++#define inline __inline
++#define __inline__ __inline
++#endif
+ 
+ mems_sled_t *
+ mems_lbn_to_sled (mems_t *dev, int lbn)

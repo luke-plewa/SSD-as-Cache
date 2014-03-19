@@ -1,0 +1,15 @@
+--- diskmodel/layout_g1.c 2009-12-29 20:56:51.141949420 +0900
++++ diskmodel/layout_g1.c 2009-12-29 19:46:03.834085354 +0900
+@@ -1939,10 +1939,10 @@
+      struct dm_layout_zone *result)
+ {
+   struct dm_layout_g1 *l = (struct dm_layout_g1 *)d->layout;
+-  struct dm_layout_g1_band *z;
++  struct dm_layout_g1_band *z = calloc(sizeof(struct dm_layout_g1_band), 1);
+ 
+   // check args  
+-  if(z == 0) { return -1; }
++  if(z == NULL) { return -1; }
+   if(n < 0 || n >= l->bands_len) { return -1; }
+ 
+   z = &l->bands[n];

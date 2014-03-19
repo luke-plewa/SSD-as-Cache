@@ -1,0 +1,13 @@
+--- dixtrac/.paths 2009-12-29 20:57:46.518830693 +0900
++++ dixtrac/.paths 2009-12-29 19:46:22.429960003 +0900
+@@ -39,3 +39,10 @@
+ export MEMSMODEL_CFLAGS=-I$(MEMSMODEL_INCL)
+ export MEMSMODEL_LDPATH=$(MEMSMODEL_PREFIX)/lib
+ export MEMSMODEL_LDFLAGS=-L$(MEMSMODEL_LDPATH) -lmemsmodel
++
++# path to ssdmodel
++export SSDMODEL_PREFIX=../ssdmodel
++export SSDMODEL_INCL=$(SSDMODEL_PREFIX)/include
++export SSDMODEL_CFLAGS=-I$(SSDMODEL_INCL)
++export SSDMODEL_LDPATH=$(SSDMODEL_PREFIX)/lib
++export SSDMODEL_LDFLAGS=-L$(SSDMODEL_LDPATH) -lssdmodel

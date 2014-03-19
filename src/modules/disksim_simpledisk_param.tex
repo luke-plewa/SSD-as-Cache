@@ -1,0 +1,124 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_simpledisk} & \texttt{Scheduler} & block & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is an ioqueue; see Section \ref{param.queue} for details.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_simpledisk} & \texttt{Max queue length} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the maximum number of requests that the simpledisk can have
+in service or queued for service at any point in time. During
+initialization, other components request this information and respect
+it during simulation.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_simpledisk} & \texttt{Block count} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the capacity of the simpledisk in blocks.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_simpledisk} & \texttt{Bus transaction latency} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the delay involved at the simpledisk for each message that
+it transfers.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_simpledisk} & \texttt{Bulk sector transfer time} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the time necessary to transfer a single 512-byte block to,
+from or through the controller. Transferring one block over the bus
+takes the maximum of this time, the block transfer time specified for
+the bus itself, and the block transfer time specified for the
+component on the other end of the bus transfer.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_simpledisk} & \texttt{Never disconnect} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies whether or not the simpledisk retains ownership of the bus
+during the entire processing and servicing of a request (i.e.,~from
+arrival to completion). If false~(0), the simpledisk may release the
+bus whenever it is not needed for transferring data or control
+information.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_simpledisk} & \texttt{Print stats} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Specifies whether or not statistics for the simpledisk will be reported.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_simpledisk} & \texttt{Command overhead} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies a per-request processing overhead that takes place
+immediately after the arrival of a new request at the disk.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_simpledisk} & \texttt{Constant access time} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the fixed per-request access time (i.e.,~actual mechanical
+activity is not simulated).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_simpledisk} & \texttt{Access time} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+Synonym for \texttt{Constant access time}.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

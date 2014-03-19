@@ -1,0 +1,267 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Addressing mode} & string & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies how the logical data organization is addressed.
+\texttt{Array} indicates that there is a single logical device number for
+the entire logical organization.
+\texttt{Parts} indicates that back-end storage devices are addressed as
+though there were no logical organization, and requests are re-mapped
+appropriately.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Distribution scheme} & string & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the data distribution scheme (which is orthogonal to
+the redundancy scheme).
+\texttt{Asis} indicates that no re-mapping occurs.
+\texttt{Striped} indicates that data are striped over the organization
+members.
+\texttt{Random} indicates that a random disk is selected for each request.
+N.B.: This is only to be used with constant access-time disks
+for load-balancing experiments.
+\texttt{Ideal} indicates that an idealized data distribution (from a load
+balancing perspective) should be simulated by assigning requests to
+disks in a round-robin fashion. Note that the last two schemes do not
+model real data layouts. In particular, two requests to the same
+block will often be sent to different devices. However, these data
+distribution schemes are useful for investigating various load
+balancing techniques \cite{Ganger93a}.
+N.B.: This is only to be used with constant access-time disks
+for load-balancing experiments.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Redundancy scheme} & string & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the redundancy scheme (which is orthogonal to the data
+distribution scheme).
+\texttt{Noredun} indicates that no redundancy is employed.
+\texttt{Shadowed} indicates that one or more replicas of each data disk are
+maintained.
+\texttt{Parity\_disk} indicates that one parity disk is maintained to
+protect the data of the other organization members.
+\texttt{Parity\_rotated} indicates that one disk's worth of data (spread
+out across all disks) are dedicated to holding parity information that
+protects the other N-1 disks' worth of data in an N-disk organization.
+%``Parity\_declustered'' indicates that a complex parity-based scheme
+%such as parity declustering \cite{Holland92} is used to protect the
+%organization's data. The last option is not supported in the first
+%release of DiskSim.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Components} & string & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies whether the data organization's component members are entire
+disks (\texttt{Whole}) or partial disks (\texttt{Partial}). Only the former
+option is supported in the first released version of DiskSim.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{devices} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+List of device names to be included in this logical organization.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Stripe unit} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the stripe unit size. 0~indicates fine-grained striping
+(e.g.,~bit or byte striping), wherein all data disks in the logical
+organization contain an equal fraction of every addressable data unit.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Synch writes for safety} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies whether or not an explicit effort should be made to do the
+N+1 writes of a parity-protected logical organization at ``the same
+time'' when handling a front-end write request with the
+read-modify-write (RMW) approach to parity computation.
+If true~(1), then all reading of old values (for computing updated
+parity values) must be completed before the set of back-end writes is issued.
+If false~(0), then each back-end write is issued immediately after the
+corresponding read completes (perhaps offering improved performance).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Number of copies} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the number of copies of each data disk if the logical
+organization employs \texttt{Shadowed} redundancy. Otherwise, this
+parameter is ignored.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Copy choice on read} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the policy used for selecting which disk from a set of
+\texttt{Shadowed} replicas should service a given read request since any
+of them can potentially do so.
+1~indicates that all read requests are sent to a single primary
+replica.
+2~indicates that one of the replicas should be randomly selected for
+each read request.
+3~indicates that requests should be assigned to replicas in a
+round-robin fashion.
+4~indicates that the replica that would incur the shortest seek
+distance should be selected and ties are broken by random selection.
+5~indicates that the replica that has the shortest request queue
+should be selected and ties are broken by random selection.
+6~indicates that the replica that has the shortest request queue
+should be selected and ties are broken by policy~4 (see above). This
+parameter is ignored if \texttt{Shadowed} replication is not chosen.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{RMW vs. reconstruct} & float & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the breakpoint in selecting Read-Modify-Write (RMW) parity
+updates (verses complete reconstruction) as the fraction of data disks
+that are updated. If the number of disks updated by the front-end
+write request is smaller than the breakpoint, then the RMW of the
+``old'' data, ``old'' parity, and ``new'' data is used to compute the
+new parity. Otherwise, the unmodified data in the affected stripe are
+read from the corresponding data disks and combined with the new data
+to calculate the new parity. This parameter is ignored unless some
+form of parity-based replication is chosen.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Parity stripe unit} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the stripe unit size used for the \texttt{Parity\_rotated}
+redundancy scheme. This parameter is ignored for other schemes. The
+parity stripe unit size does not have to be equal to the stripe unit
+size, but one must be a multiple of the other. Use of non-equal
+stripe unit sizes for data and parity has not been thoroughly tested
+in the current release of DiskSim.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Parity rotation type} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies how parity is rotated
+among the disks of the logical organization. The four options, as
+described in \cite{Lee91}, are
+1 - left symmetric,
+2 - left asymmetric,
+3 - right asymmetric,
+4 - right symmetric.
+This parameter is ignored unless \texttt{Parity\_rotated} redundancy is
+chosen.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Time stamp interval} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the interval between ``time stamps.'' A value of $0.0$ for
+this parameter disables the time stamp mechanism.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Time stamp start time} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the simulated time (relative to the beginning of the
+simulation) of the first time stamp.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Time stamp stop time} & float & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the simulated time (relative to the beginning of the
+simulation) of the last time stamp.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{disksim\_logorg} & \texttt{Time stamp file name} & string & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the name of the output file to contain a log of the
+instantaneous queue lengths of each of the organization's back-end
+devices at each time stamp. Each line of the output file corresponds
+to a single time stamp and contains the queue lengths of each device
+separated by white space. A value of ``0'' or of ``null'' disables
+this feature (as does disabling the time stamp mechanism).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

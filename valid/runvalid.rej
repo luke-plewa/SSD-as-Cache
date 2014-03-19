@@ -1,0 +1,16 @@
+--- valid/runvalid	2008-06-23 13:20:02.000000000 -0700
++++ valid/runvalid	2008-08-18 14:41:59.984028300 -0700
+@@ -1,8 +1,12 @@
+ #!/bin/sh
+ 
++if [ "x${RUNVALID_PREFIX}" != "x" ];
++then
++PREFIX=${RUNVALID_PREFIX}
++else
+ PREFIX=../src
++fi
+ 
+-echo ""
+ echo "These results represent actual drive validation experiments"
+ 
+ echo ""

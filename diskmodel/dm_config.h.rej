@@ -1,0 +1,15 @@
+--- diskmodel/dm_config.h	2008-05-11 15:09:28.000000000 -0700
++++ diskmodel/dm_config.h	2008-08-15 18:31:18.000000000 -0700
+@@ -43,7 +43,12 @@
+ 
+ 
+ // undef this to turn off inlining
++#ifdef WIN32
++#define INLINE
++#else
+ #define INLINE inline
++#endif
++
+ 
+ // freebsd foo
+ #ifdef _DISKMODEL_FREEBSD

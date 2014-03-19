@@ -1,0 +1,68 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g4} & \texttt{TP} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+s0, -- lowest sector number on the track
+sn, -- highest sector number on the track
+spt -- physical spt on the track
+Indicates a range of lbns [0,n] map to sectors [s0,sn] on a track.
+This will almost always be [0,n-1,n] where n is the phsyical SPT.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g4} & \texttt{IDX} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+IDX contains a list of g4 layout index nodes which are themselves
+represented as lists of integers. The inner lists contain the index
+entries which have 8 fields as follows:
+lbn, -- the lbn of the first instance, relative to the parent
+cyl, -- the lowest cylinder in the first instance, relative to the parent
+runlen, -- the number of lbns this entry covers
+cylrunlen, -- the number of cylinders for this entry
+len, -- the number of lbns in one instance of the child
+cyllen, -- the number of cylinders covered by one instance
+childtype, -- whether the child is an index node (IDX) or track pattern (TP)
+child -- index of the child node in IDX or TP
+The entries are given inline so the inner lists will have a multiple
+of 8 entries.
+The last index node (last entry in the outer list) is the "root" index
+node that covers all of the LBN and cylinder space.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g4} & \texttt{Slips} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+A list of slip locations. Each slip location is described by 2
+integers, the first being the logical offset (lbn) and the second
+being the number of LBNs are slipped.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g4} & \texttt{Remaps} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+A list of remapped defects. Each remap is described by 6 integers:
+LBN, -- logical offset of remapped location
+len, -- number of contiguous sectors remapped
+cylinder, head, sector, -- remap destination
+spt -- physical SPT on destination track
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 

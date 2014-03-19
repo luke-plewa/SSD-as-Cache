@@ -1,0 +1,11 @@
+--- libparam/myutil.c 2008-05-12 07:09:29.000000000 +0900
++++ libparam/myutil.c 2009-12-29 20:23:44.199835151 +0900
+@@ -150,7 +150,7 @@
+ {
+   struct lp_param *result = calloc(1, sizeof(struct lp_param));
+   result->source_file = source;
+-  result->name = name;
++  result->name = strdup(name);
+   result->v = v;
+   
+ 

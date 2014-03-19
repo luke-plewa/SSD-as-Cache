@@ -1,0 +1,11 @@
+--- src/disksim_global.h 2009-12-29 20:56:51.157895353 +0900
++++ src/disksim_global.h 2009-12-29 19:46:03.836085835 +0900
+@@ -253,7 +253,7 @@
+    int    temp;
+ } foo;
+ 
+-#define DISKSIM_EVENT_SIZE 128
++#define DISKSIM_EVENT_SIZE 200
+ #define DISKSIM_EVENT_SPACESIZE (DISKSIM_EVENT_SIZE - sizeof(struct foo))
+ 
+ typedef struct ev {

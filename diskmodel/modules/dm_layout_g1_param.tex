@@ -1,0 +1,93 @@
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g1} & \texttt{LBN-to-PBN mapping scheme} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the type of LBN-to-PBN mapping used by the disk.
+0 indicates that the conventional mapping scheme is used:
+LBNs advance along the 0th track of the 0th cylinder, then along the
+1st track of the 0th cylinder, thru the end of the 0th cylinder, then
+to the 0th track of the 1st cylinder, and so forth.
+1 indicates that the conventional mapping scheme is modified slightly,
+such that cylinder switches do not involve head switches. Thus, after
+LBNs are assigned to the last track of the 0th cylinder, they are
+assigned to the last track of the 1st cylinder, the next-to-last track
+of the 1st cylinder, thru the 0th track of the 1st cylinder. LBNs are
+then assigned to the 0th track of the 2nd cylinder, and so on
+(``first cylinder is normal'').
+2 is like 1 except that the serpentine pattern does not reset at the
+beginning of each zone; rather, even cylinders are always ascending and
+odd cylinders are always descending.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g1} & \texttt{Sparing scheme used} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the type of sparing used by the disk. Later parameters determine
+where spare space is allocated.
+0~indicates that no spare sectors are allocated.
+1~indicates that entire tracks of spare sectors are allocated at the ``end''
+of some or all zones (sets of cylinders).
+2~indicates that spare sectors are allocated at the ``end'' of each cylinder.
+3~indicates that spare sectors are allocated at the ``end'' of each track.
+4~indicates that spare sectors are allocated at the ``end'' of each cylinder
+and that slipped sectors do not utilize these spares (more spares are located
+at the ``end'' of the disk).
+5~indicates that spare sectors are allocated at the ``front'' of each cylinder.
+6~indicates that spare sectors are allocated at the ``front'' of each cylinder
+and that slipped sectors do not utilize these spares (more spares are located
+at the ``end'' of the disk).
+7~indicates that spare sectors are allocated at the ``end'' of the disk.
+8~indicates that spare sectors are allocated at the ``end'' of each range
+of cylinders.
+9~indicates that spare sectors are allocated at the ``end'' of each zone.
+10~indicates that spare sectors are allocated at the ``end'' of each zone
+and that slipped sectors do not use these spares (more spares are located
+at the ``end'' of the disk).
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g1} & \texttt{Rangesize for sparing} & int & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This specifies the range (e.g., of cylinders) over which spares are
+allocated and maintained. Currently, this value is relevant only for
+disks that use ``sectors per cylinder range'' sparing schemes.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g1} & \texttt{Skew units} & string & optional \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This sets the units with which units are input: \texttt{revolutions} or
+\texttt{sectors}. The ``disk-wide'' value set here may be overridden
+per-zone. The default unit is \texttt{sectors}.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
+\noindent 
+\begin{tabular}{|p{\lpmodwidth}|p{\lpnamewidth}|p{0.5in}|p{0.5in}|}
+\cline{1-4}
+\texttt{dm\_layout\_g1} & \texttt{Zones} & list & required \\ 
+\cline{1-4}
+\multicolumn{4}{|p{6in}|}{
+This is a list of zone block values describing the zones/bands of the disk.
+}\\ 
+\cline{1-4}
+\multicolumn{4}{p{5in}}{}\\
+\end{tabular}\\ 
