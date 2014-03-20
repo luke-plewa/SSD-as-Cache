@@ -1,3 +1,9 @@
+SSD-as-Cache is a DiskSim implementation using
+	Microsoft's SSD extension
+	Yonggang Liu's 64 bit patch
+
+This implementation uses Smart Response Technology
+and simulates an SSD as a cache build upon a HDD.
 
 This directory contains release 4.0 of the DiskSim storage subsystem
 simulator.  Check out the doc directory for he corresponding reference 
