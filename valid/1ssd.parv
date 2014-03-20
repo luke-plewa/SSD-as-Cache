@@ -332,8 +332,8 @@ instantiate [ statfoo ]    as  Stats
 instantiate [ bus0 ]             as  BUS0
 instantiate [ bus1 ]             as  BUS1
 instantiate [ driver0 ]          as  DRIVER0
-instantiate [ cache_disk ] as HDD
-instantiate [ disk ]   as  SSD
+instantiate [ cache_disk ] as SSD
+instantiate [ disk ]   as  HDD
 
 # this controller contains a cachedev which refers to disk0 and disk1
 # so they must be instantiated first

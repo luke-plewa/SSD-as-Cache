@@ -248,11 +248,11 @@ instantiate [
 
 instantiate [ 
    cache_disk
-] as HDD
+] as SSD
 
 instantiate [ 
    disk
-] as SSD
+] as HDD
 
 instantiate [ 
    ctlr0
