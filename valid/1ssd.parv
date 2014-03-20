@@ -124,7 +124,7 @@ Cache = disksim_cachedev {
   Cache device = cache_disk,    # device caching on
   Cached device = disk,            # device being cached
   Max request size = 512,
-  Write scheme = 3,                  # 2 is write-through, 3 is write-back
+  Write scheme = 2,                  # 2 is write-through, 3 is write-back
   Flush policy = 0,                     # 0 is on-demand, 1 is period
   Flush period = 0.0,                 # if policy, time between write-backs
   Flush idle delay = 100.0         # idle time until write-back inits
@@ -134,75 +134,7 @@ Cache = disksim_cachedev {
 
 } # end of CTLR0 spec
 
-ssdmodel_ssd SSD {
-     # vp - this is a percentage of total pages in the ssd
-     Reserve pages percentage = 15,
-
-     # vp - min percentage of free blocks needed. if the free 
-     # blocks drop below this, cleaning kicks in
-     Minimum free blocks percentage = 5,
-
-     # vp - a simple read-modify-erase-write policy = 1 (no longer supported)
-     # vp - osr write policy = 2
-     Write policy = 2,
-
-     # vp - random = 1 (not supp), greedy = 2, wear-aware = 3
-     Cleaning policy = 2,
-
-     # vp - number of planes in each flash package (element)
-     Planes per package = 8,
-
-     # vp - number of flash blocks in each plane
-     Blocks per plane = 2048,
-
-     # vp - how the blocks within an element are mapped on a plane
-     # simple concatenation = 1, plane-pair stripping = 2 (not tested),
-     # full stripping = 3
-     Plane block mapping = 3,
-
-     # vp - copy-back enabled (1) or not (0)
-     Copy back = 1,
-
-     # how many parallel units are there?
-     # entire elem = 1, two dies = 2, four plane-pairs = 4
-     Number of parallel units = 1,
-
-     # vp - we use diff allocation logic: chip/plane
-     # each gang = 0, each elem = 1, each plane = 2
-     Allocation pool logic = 1,
-
-     # elements are grouped into a gang
-     Elements per gang = 1,
-
-     # shared bus (1) or shared control (2) gang
-     Gang share = 1,
-
-     # when do we want to do the cleaning?
-     Cleaning in background = 0,
-
-     Command overhead =  0.00,
-     Bus transaction latency =  0.0,
-
-#    Assuming PCI-E, with 8 lanes with 8b/10b encoding.
-#    This gives 2.0 Gbps per lane and with 8 lanes we get about
-#    2.0 GBps. So, bulk sector transfer time is about 0.238 us.
-#    Use the "Read block transfer time" and "Write block transfer time"
-#    from disksim_bus above.
-     Bulk sector transfer time =  0,
-
-     Flash chip elements = 8,
-
-     Page size = 8,
-
-     Pages per block = 64,
-
-     # vp - changing the no of blocks from 16184 to 16384
-     Blocks per element = 16384,
-
-     Element stride pages = 1,
-
-     Never disconnect =  1,
-     Print stats =  1,
+disksim_simpledisk SSD {
      Max queue length =  20,
      Scheduler = disksim_ioqueue {
        Scheduling policy =  1,
@@ -219,85 +151,16 @@ ssdmodel_ssd SSD {
        Scheduling priority scheme =  0,
        Priority scheduling =  1
      },
-     Timing model = 1,
+     Block count = 2056008,
+     Bus transaction latency = 0.0,
+     Bulk sector transfer time = 1.0,
+     Never disconnect = 1,
+     Print stats = 1,
+     Command overhead = 0.0,
+     Access time = 0.3
+}
 
-     # vp changing the Chip xfer latency from per sector to per byte
-     Chip xfer latency = 0.000025,
-
-     Page read latency = 0.025,
-     Page write latency = 0.200,
-     Block erase latency = 1.5
-}  # end of SSD spec
-
-ssdmodel_ssd HDD {
-     # vp - this is a percentage of total pages in the ssd
-     Reserve pages percentage = 15,
-
-     # vp - min percentage of free blocks needed. if the free 
-     # blocks drop below this, cleaning kicks in
-     Minimum free blocks percentage = 5,
-
-     # vp - a simple read-modify-erase-write policy = 1 (no longer supported)
-     # vp - osr write policy = 2
-     Write policy = 2,
-
-     # vp - random = 1 (not supp), greedy = 2, wear-aware = 3
-     Cleaning policy = 2,
-
-     # vp - number of planes in each flash package (element)
-     Planes per package = 8,
-
-     # vp - number of flash blocks in each plane
-     Blocks per plane = 2048,
-
-     # vp - how the blocks within an element are mapped on a plane
-     # simple concatenation = 1, plane-pair stripping = 2 (not tested),
-     # full stripping = 3
-     Plane block mapping = 3,
-
-     # vp - copy-back enabled (1) or not (0)
-     Copy back = 1,
-
-     # how many parallel units are there?
-     # entire elem = 1, two dies = 2, four plane-pairs = 4
-     Number of parallel units = 1,
-
-     # vp - we use diff allocation logic: chip/plane
-     # each gang = 0, each elem = 1, each plane = 2
-     Allocation pool logic = 1,
-
-     # elements are grouped into a gang
-     Elements per gang = 1,
-
-     # shared bus (1) or shared control (2) gang
-     Gang share = 1,
-
-     # when do we want to do the cleaning?
-     Cleaning in background = 0,
-
-     Command overhead =  0.00,
-     Bus transaction latency =  0.0,
-
-#    Assuming PCI-E, with 8 lanes with 8b/10b encoding.
-#    This gives 2.0 Gbps per lane and with 8 lanes we get about
-#    2.0 GBps. So, bulk sector transfer time is about 0.238 us.
-#    Use the "Read block transfer time" and "Write block transfer time"
-#    from disksim_bus above.
-     Bulk sector transfer time =  0,
-
-     Flash chip elements = 8,
-
-     Page size = 8,
-
-     Pages per block = 64,
-
-     # vp - changing the no of blocks from 16184 to 16384
-     Blocks per element = 16384,
-
-     Element stride pages = 1,
-
-     Never disconnect =  1,
-     Print stats =  1,
+disksim_simpledisk HDD {
      Max queue length =  20,
      Scheduler = disksim_ioqueue {
        Scheduling policy =  1,
@@ -314,15 +177,14 @@ ssdmodel_ssd HDD {
        Scheduling priority scheme =  0,
        Priority scheduling =  1
      },
-     Timing model = 1,
-
-     # vp changing the Chip xfer latency from per sector to per byte
-     Chip xfer latency = 0.000025,
-
-     Page read latency = 0.025,
-     Page write latency = 0.200,
-     Block erase latency = 1.5
-}  # end of SSD spec
+     Block count = 131584512,
+     Bus transaction latency = 0.0,
+     Bulk sector transfer time = 1.0,
+     Never disconnect = 1,
+     Print stats = 1,
+     Command overhead = 0.0,
+     Access time = 1.0
+}
 
 # HP_C3323A
 source hp_c3323a.diskspecs
@@ -345,8 +207,8 @@ topology disksim_iodriver driver0 [
      disksim_bus bus0 [ 
           disksim_ctlr ctlr0 [ 
                disksim_bus bus1 [ 
-                    ssdmodel_ssd disk [],
-                    ssdmodel_ssd cache_disk []
+                    disksim_simpledisk disk [],
+                    disksim_simpledisk cache_disk []
                     # end of bus1
                ]
                # end of ctlr0
