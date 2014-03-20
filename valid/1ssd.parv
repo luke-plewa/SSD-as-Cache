@@ -237,7 +237,7 @@ instantiate [ statfoo ]    as  Stats
 instantiate [ bus0 ]             as  BUS0
 instantiate [ bus1 ]             as  BUS1
 instantiate [ driver0 ]          as  DRIVER0
-instantiate [ disk, cache_disk ]   as  HP_C3323A
+instantiate [ disk, SSD ]   as  HP_C3323A
 
 # this controller contains a cachedev which refers to disk0 and disk1
 # so they must be instantiated first
@@ -250,7 +250,7 @@ topology disksim_iodriver driver0 [
           disksim_ctlr ctlr0 [ 
                disksim_bus bus1 [ 
                     disksim_disk disk [],
-                    disksim_disk cache_disk []
+                    disksim_disk SSD []
                     # end of bus1
                ]
                # end of ctlr0
