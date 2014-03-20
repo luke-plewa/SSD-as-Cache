@@ -120,7 +120,7 @@ disksim_ctlr CTLR0 {
  },  # end of ioqueue spec 
 
 Cache = disksim_cachedev { 
-  Cache size = 1028004,            # size in blocks
+  Cache size = 2056008,            # size in blocks
   Cache device = SSD,    # device caching on
   Cached device = disk,            # device being cached
   Max request size = 512,
