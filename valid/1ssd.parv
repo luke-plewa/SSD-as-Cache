@@ -121,7 +121,7 @@ disksim_ctlr CTLR0 {
 
 Cache = disksim_cachedev { 
   Cache size = 2056008,            # size in blocks
-  Cache device = SSD,    # device caching on
+  Cache device = ssd0x0,    # device caching on
   Cached device = disk,            # device being cached
   Max request size = 512,
   Write scheme = 3,                  # 2 is write-through, 3 is write-back
@@ -237,7 +237,9 @@ instantiate [ statfoo ]    as  Stats
 instantiate [ bus0 ]             as  BUS0
 instantiate [ bus1 ]             as  BUS1
 instantiate [ driver0 ]          as  DRIVER0
-instantiate [ disk, SSD ]   as  HP_C3323A
+instantiate [ disk ]   as  HP_C3323A
+# vp - adding another ssd 
+instantiate [ ssd0x0 ] as  SSD
 
 # this controller contains a cachedev which refers to disk0 and disk1
 # so they must be instantiated first
@@ -250,7 +252,7 @@ topology disksim_iodriver driver0 [
           disksim_ctlr ctlr0 [ 
                disksim_bus bus1 [ 
                     disksim_disk disk [],
-                    disksim_disk SSD []
+                    ssdmodel_ssd ssd0x0 []
                     # end of bus1
                ]
                # end of ctlr0
