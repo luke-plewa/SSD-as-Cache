@@ -90,8 +90,8 @@ disksim_bus BUS1 {
 type = 1,
 Arbitration type = 1,
 Arbitration time = 0.0,
-Read block transfer time = 0.05120,
-Write block transfer time = 0.05120,
+Read block transfer time = 1.120,
+Write block transfer time = 1.120,
 Print stats =  1
 } # end of BUS1 spec
 
@@ -117,16 +117,16 @@ Scheduler = disksim_ioqueue {
      Priority scheduling = 4
 },  # end of ioqueue spec 
 Cache = disksim_cachemem { 
-     Cache size = 8192,
+     Cache size = 32768,
      SLRU segments = [ 1.0 ],
      Line size = 64,
      Bit granularity = 1,
      Lock granularity = 64,
      Shared read locks = 1,
      Max request size = 512,
-     Replacement policy = 2,
+     Replacement policy = 4, # 1 fifo, 2 lru, 3 random, 4 lifo
      Allocation policy = 0,
-     Write scheme = 3,
+     Write scheme = 3, # write back
      Flush policy = 0,
      Flush period = 0.0,
      Flush idle delay = -1.0,
