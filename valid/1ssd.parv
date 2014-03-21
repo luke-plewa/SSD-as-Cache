@@ -120,11 +120,11 @@ disksim_ctlr CTLR0 {
  },  # end of ioqueue spec 
 
 Cache = disksim_cachedev { 
-  Cache size = 2056008,            # size in blocks
+  Cache size = 4112016,            # size in blocks
   Cache device = cache_disk,    # device caching on
   Cached device = disk,            # device being cached
   Max request size = 512,
-  Write scheme = 2,                  # 2 is write-through, 3 is write-back
+  Write scheme = 3,                  # 2 is write-through, 3 is write-back
   Flush policy = 0,                     # 0 is on-demand, 1 is period
   Flush period = 0.0,                 # if policy, time between write-backs
   Flush idle delay = 100.0         # idle time until write-back inits
@@ -151,7 +151,7 @@ disksim_simpledisk SSD {
        Scheduling priority scheme =  0,
        Priority scheduling =  1
      },
-     Block count = 2056008,
+     Block count = 4112016,
      Bus transaction latency = 0.0,
      Bulk sector transfer time = 1.0,
      Never disconnect = 1,

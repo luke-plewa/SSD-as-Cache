@@ -1,5 +1,5 @@
 
-*** Output file name: valid/1ssd.outv
+*** Output file name: valid/1ssd-eighth.outv
 *** Input trace format: ascii
 *** I/O trace used: 0
 *** Synthgen to be used?: 1
@@ -124,7 +124,7 @@ Scheduling priority scheme = 0,
 Priority scheduling = 4
    },
 Cache = disksim_cachedev {
-Cache size = 4112016,
+Cache size = 257001,
 Cache device = cache_disk,
 Cached device = disk,
 Max request size = 512,
@@ -153,7 +153,7 @@ Timeout scheduling = 0,
 Scheduling priority scheme = 0,
 Priority scheduling = 1
    },
-Block count = 4112016,
+Block count = 257001,
 Bus transaction latency = 0.0,
 Bulk sector transfer time = 1.000000,
 Never disconnect = 1,
@@ -234,7 +234,7 @@ Redundancy scheme = Noredun,
 devices = [ 
       disk
    ],
-Stripe unit = 131584512,
+Stripe unit = 2056008,
 Synch writes for safety = 0,
 Number of copies = 2,
 Copy choice on read = 6,
@@ -260,7 +260,7 @@ Think time from call to request = 0.0,
 Think time from request to return = 0.0,
 Generators = [ 
       disksim_synthgen {
-Storage capacity per device = 131584512,
+Storage capacity per device = 2056008,
 devices = [ 
             disk
          ],
@@ -302,7 +302,7 @@ Sizes = [
          ]
       }, 
       disksim_synthgen {
-Storage capacity per device = 131584512,
+Storage capacity per device = 2056008,
 devices = [ 
             disk
          ],
@@ -344,7 +344,7 @@ Sizes = [
          ]
       }, 
       disksim_synthgen {
-Storage capacity per device = 131584512,
+Storage capacity per device = 2056008,
 devices = [ 
             disk
          ],
@@ -386,7 +386,7 @@ Sizes = [
          ]
       }, 
       disksim_synthgen {
-Storage capacity per device = 131584512,
+Storage capacity per device = 2056008,
 devices = [ 
             disk
          ],
@@ -428,7 +428,7 @@ Sizes = [
          ]
       }, 
       disksim_synthgen {
-Storage capacity per device = 131584512,
+Storage capacity per device = 2056008,
 devices = [ 
             disk
          ],
